@@ -1,0 +1,16 @@
+db:
+  environment:
+    MYSQL_ROOT_PASSWORD: example
+  image: mariadb
+  volumes:
+  - /var/docker/testsite9.de/mysql:/var/lib/mysql
+typo3:
+  environment:
+    VIRTUAL_HOST: testsite8.de
+  ports:
+  - 80
+  image: np/typo3:0.9
+  links:
+  - db:mysql
+  volumes:
+  - /var/docker/testsite9.de/htdocs:/var/www/htdocs
