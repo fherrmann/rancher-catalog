@@ -1,5 +1,9 @@
 name: TYPO3 7.6
 description: |
-  Test
+  TYPO3 7.6 image
+  Apache 2.4.7
+  PHP: 7.05
 version: v0.1.0
 category: CMS
+maintainer: theinrichs@netzpepper.de
+projectURL: https://github.com/theinrichs/rancher-catalog
