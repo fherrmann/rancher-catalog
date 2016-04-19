@@ -3,7 +3,7 @@ db:
     MYSQL_ROOT_PASSWORD: example
   image: mariadb
   volumes:
-  - mysqldata:/var/lib/mysql
+  - ${VHOSTNAME}_mysql/mysql:/var/lib/mysql
 typo3:
   environment:
     VIRTUAL_HOST: ${VHOSTNAME}
@@ -13,4 +13,4 @@ typo3:
   links:
   - db:mysql
   volumes:
-  - typo3data:/var/www/htdocs
+  - ${VHOSTNAME}_mysql/htdocs:/var/www/htdocs
