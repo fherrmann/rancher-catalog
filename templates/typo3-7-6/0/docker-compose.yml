@@ -6,7 +6,7 @@ db:
   - ${VHOSTNAME}_mysql/mysql:/var/lib/mysql
 typo3:
   environment:
-    VIRTUAL_HOST: ${VHOSTNAME}
+    VIRTUAL_HOST: ${VHOSTNAME},www.${VHOSTNAME}
   ports:
   - 80
   image: np/typo3:0.11
