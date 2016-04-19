@@ -9,7 +9,7 @@ typo3:
     VIRTUAL_HOST: ${VHOSTNAME}
   ports:
   - 80
-  image: np/typo3:0.9
+  image: np/typo3:0.10
   links:
   - db:mysql
   volumes:
