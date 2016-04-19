@@ -1,16 +1,22 @@
-db:
-  environment:
-    MYSQL_ROOT_PASSWORD: example
-  image: mariadb
-  volumes:
-  - ${VHOSTNAME}_mysql/mysql:/var/lib/mysql
-typo3:
-  environment:
-    VIRTUAL_HOST: ${VHOSTNAME},www.${VHOSTNAME}
-  ports:
-  - 80
-  image: np/typo3:0.11
-  links:
-  - db:mysql
-  volumes:
-  - ${VHOSTNAME}_mysql/htdocs:/var/www/htdocs
+version: '2'
+services:
+  db:
+    environment:
+      MYSQL_ROOT_PASSWORD: example
+    image: mariadb
+    volumes:
+    - mysql:/var/lib/mysql
+  typo3:
+    environment:
+      VIRTUAL_HOST: ${VHOSTNAME},www.${VHOSTNAME}
+    ports:
+    - 80
+    image: np/typo3:0.11
+    links:
+    - db:mysql
+    volumes:
+    - typo3:/var/www/htdocs
+
+volumes:
+  mysql: {}
+  typo3: {}
