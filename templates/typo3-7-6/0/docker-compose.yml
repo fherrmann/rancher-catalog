@@ -5,11 +5,10 @@ db:
   volumes:
   - ${VHOSTNAME}-mysql:/var/lib/mysql
 typo3:
-  environment:
-    VIRTUAL_HOST: ${VHOSTNAME},www.${VHOSTNAME}
+  hostname: www.${VHOSTNAME}
   ports:
   - 80
-  image: np/typo3:0.14
+  image: theinrichs/typo376:0.1
   links:
   - db:mysql
   volumes:
