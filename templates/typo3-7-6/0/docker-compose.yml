@@ -14,7 +14,7 @@ typo3:
   volumes:
   - ${VHOSTNAME}-typo3:/var/www/htdocs
 access:
-  image: theinrichs/sftp:0.2
+  image: theinrichs/sftp:0.3
   ports:
   - 22
   volumes:
