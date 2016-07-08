@@ -3,8 +3,13 @@
     version: "v0.1.0"
     description: "netzpepper TYPO3-Image"
     questions:
-     - variable: "VHOSTNAME"
-       description: "Hostname of the website"
-       label: "Hostname"
+     - variable: "SERVERNAME"
+       description: "Servername of the website"
+       label: "Servername"
        required: true
        type: "string"
+     - variable: "PROXYPORT"
+       description: "Port that is addressed by reverse-proxy. Leave empty to avoid proxying"
+       label: "Proxyport"
+       default: 80
+       type: "int"

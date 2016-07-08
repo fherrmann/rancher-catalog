@@ -3,19 +3,23 @@ db:
     MYSQL_ROOT_PASSWORD: example
   image: mariadb
   volumes:
-  - ${VHOSTNAME}-mysql:/var/lib/mysql
+  - ${SERVERNAME}-mysql:/var/lib/mysql
 typo3:
-  hostname: www.${VHOSTNAME}
   ports:
   - 80
-  image: theinrichs/typo376:0.1
+  image: theinrichs/typo376:0.2
   links:
   - db:mysql
   volumes:
-  - ${VHOSTNAME}-typo3:/var/www/htdocs
+  - ${SERVERNAME}-typo3:/var/www/htdocs
+  labels:
+    de.netzpepper.proxyport: ${PROXYPORT}
+    de.netzpepper.servername: ${SERVERNAME}
 access:
-  image: theinrichs/sftp:0.3
+  image: theinrichs/sftp:0.7
   ports:
   - 22
   volumes:
-  - ${VHOSTNAME}-typo3:/var/www/htdocs
+  - ${SERVERNAME}-typo3:/var/www/htdocs
+  labels:
+    de.netzpepper.sftp.servername: sftp.${SERVERNAME}
