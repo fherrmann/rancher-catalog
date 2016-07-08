@@ -1,8 +1,6 @@
 name: TYPO3 7.6
 description: |
   TYPO3 7.6 image
-  Apache 2.4.7
-  PHP: 7.0.5
 version: v0.1.0
 category: CMS
 maintainer: theinrichs@netzpepper.de

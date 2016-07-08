@@ -5,8 +5,8 @@ db:
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
 typo3:
-  ports:
-  - 80
+  expose:
+  - "80"
   image: theinrichs/typo376:0.2
   links:
   - db:mysql
@@ -14,12 +14,14 @@ typo3:
   - ${SERVERNAME}-typo3:/var/www/htdocs
   labels:
     de.netzpepper.proxyport: ${PROXYPORT}
-    de.netzpepper.servername: ${SERVERNAME}
+    de.netzpepper.servername: www.${SERVERNAME}
 access:
   image: theinrichs/sftp:0.7
-  ports:
-  - 22
+  environment:
+    PUBLICHOST: sftp.${SERVERNAME}
+  expose:
+  - "22"
   volumes:
-  - ${SERVERNAME}-typo3:/var/www/htdocs
+  - ${SERVERNAME}-typo3:/data
   labels:
     de.netzpepper.sftp.servername: sftp.${SERVERNAME}
