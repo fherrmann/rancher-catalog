@@ -13,3 +13,7 @@
        label: "Proxyport"
        default: 80
        type: "int"
+    - variable: "CRONJOBS"
+      description: "# m h  dom mon dow   command"
+      label: "Cronjobs"
+      type: "multiline"
