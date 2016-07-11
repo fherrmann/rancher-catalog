@@ -5,6 +5,8 @@ db:
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
 typo3:
+  environment:
+    CRONJOBS: ${CRONJOBS}
   expose:
   - "80"
   image: theinrichs/typo376:0.2
