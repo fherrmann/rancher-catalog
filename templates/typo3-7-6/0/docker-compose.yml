@@ -4,16 +4,17 @@ db:
   image: mariadb
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
+  - ${SERVERNAME}-config:/config/mysql
 typo3:
-  environment:
-    CRONJOBS: ${CRONJOBS}
+  image: theinrichs/typo376:0.2
   expose:
   - "80"
-  image: theinrichs/typo376:0.2
   links:
   - db:mysql
   volumes:
   - ${SERVERNAME}-typo3:/var/www/htdocs
+  - ${SERVERNAME}-config:/config/apache
+  - ${SERVERNAME}-config:/config/cron
   labels:
     de.netzpepper.proxyport: ${PROXYPORT}
     de.netzpepper.servername: www.${SERVERNAME}
@@ -25,5 +26,6 @@ access:
   - "22"
   volumes:
   - ${SERVERNAME}-typo3:/data
+  - ${SERVERNAME}-config:/config/ftp
   labels:
     de.netzpepper.sftp.servername: sftp.${SERVERNAME}
