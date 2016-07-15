@@ -20,8 +20,6 @@ typo3:
     de.netzpepper.redirects: ${SERVERNAME}
 access:
   image: theinrichs/sftp:0.7
-  environment:
-    PUBLICHOST: sftp.${SERVERNAME}
   expose:
   - "22"
   volumes:
