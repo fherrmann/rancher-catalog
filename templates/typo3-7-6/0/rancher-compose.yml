@@ -18,3 +18,8 @@
       label: "Proxyport"
       default: 80
       type: "int"
+    - variable: "COPYFROM"
+      description: "Use "
+      label: "Copy system from specified location"
+      default: false
+      type: "string"

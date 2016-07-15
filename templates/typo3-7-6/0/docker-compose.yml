@@ -6,18 +6,18 @@ db:
   - ${SERVERNAME}-mysql:/var/lib/mysql
   - ${SERVERNAME}-config:/config/mysql
 typo3:
-  image: theinrichs/typo376:0.2
+  image: theinrichs/typo3_7-6:0.1
   expose:
   - "80"
   links:
   - db:mysql
   volumes:
   - ${SERVERNAME}-typo3:/var/www/htdocs
-  - ${SERVERNAME}-config:/config/apache
-  - ${SERVERNAME}-config:/config/cron
+  - ${SERVERNAME}-config:/config/
   labels:
     de.netzpepper.proxyport: ${PROXYPORT}
     de.netzpepper.servername: www.${SERVERNAME}
+    de.netzpepper.redirects: ${SERVERNAME}
 access:
   image: theinrichs/sftp:0.7
   environment:
@@ -25,7 +25,7 @@ access:
   expose:
   - "22"
   volumes:
-  - ${SERVERNAME}-typo3:/data
-  - ${SERVERNAME}-config:/config/ftp
+  - ${SERVERNAME}-typo3:/data/typo3
+  - ${SERVERNAME}-config:/data/config
   labels:
     de.netzpepper.sftp.servername: sftp.${SERVERNAME}
