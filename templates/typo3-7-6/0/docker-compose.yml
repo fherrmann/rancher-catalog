@@ -5,8 +5,12 @@ db:
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
   - ${SERVERNAME}-config:/config/mysql
+  labels:
+    io.rancher.sidekicks: phpmyadmin
+phpmyadmin:
+  image: phpmyadmin/phpmyadmin
 typo3:
-  image: theinrichs/typo3_7-6:0.2
+  image: theinrichs/typo3_7-6:0.5
   expose:
   - "80"
   links:
@@ -15,11 +19,12 @@ typo3:
   - ${SERVERNAME}-typo3:/var/www/htdocs
   - ${SERVERNAME}-config:/config/
   labels:
+    io.rancher.sidekicks: access
     de.netzpepper.proxyport: ${PROXYPORT}
     de.netzpepper.servername: www.${SERVERNAME}
     de.netzpepper.redirects: ${SERVERNAME}
 access:
-  image: theinrichs/sftp:0.8
+  image: theinrichs/sftp:0.9
   expose:
   - "22"
   volumes:
@@ -27,3 +32,4 @@ access:
   - ${SERVERNAME}-config:/data/config
   labels:
     de.netzpepper.sftp.servername: sftp.${SERVERNAME}
+
