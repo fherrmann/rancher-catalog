@@ -10,7 +10,7 @@ db:
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
 typo3:
-  image: theinrichs/typo3_7-6:0.5
+  image: theinrichs/typo3_7-6:0.10
   expose:
   - "80"
   links:
