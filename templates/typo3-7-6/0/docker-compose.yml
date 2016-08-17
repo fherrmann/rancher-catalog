@@ -5,7 +5,6 @@ db:
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
   - ${SERVERNAME}-config:/config/mysql
-  labels:
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
   labels:
