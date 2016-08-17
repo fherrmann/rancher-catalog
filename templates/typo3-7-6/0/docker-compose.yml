@@ -9,6 +9,8 @@ db:
     io.rancher.sidekicks: phpmyadmin
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
+  labels:
+    de.netzpepper.phpmyadmin.servername: phpmyadmin.${SERVERNAME}
 typo3:
   image: theinrichs/typo3_7-6:0.10
   expose:
