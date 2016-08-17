@@ -6,13 +6,12 @@ db:
   - ${SERVERNAME}-mysql:/var/lib/mysql
   - ${SERVERNAME}-config:/config/mysql
   labels:
-    io.rancher.sidekicks: phpmyadmin
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
   labels:
     de.netzpepper.phpmyadmin.servername: phpmyadmin.${SERVERNAME}
 typo3:
-  image: theinrichs/typo3_7-6:0.10
+  image: theinrichs/typo3_7-6:0.11
   expose:
   - "80"
   links:
@@ -21,7 +20,6 @@ typo3:
   - ${SERVERNAME}-typo3:/var/www/htdocs
   - ${SERVERNAME}-config:/config/
   labels:
-    io.rancher.sidekicks: access
     de.netzpepper.proxyport: ${PROXYPORT}
     de.netzpepper.servername: www.${SERVERNAME}
     de.netzpepper.redirects: ${SERVERNAME}
