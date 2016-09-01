@@ -1,18 +1,15 @@
 db:
   environment:
-    MYSQL_ROOT_PASSWORD: example
+    MYSQL_RANDOM_ROOT_PASSWORD: true
   image: mariadb
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
-  - ${SERVERNAME}-config:/config/mysql
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
   labels:
     de.netzpepper.phpmyadmin.servername: phpmyadmin.${SERVERNAME}
 typo3:
   image: theinrichs/typo3_7-6:0.11
-  expose:
-  - "80"
   links:
   - db:mysql
   volumes:
