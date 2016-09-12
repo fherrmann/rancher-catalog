@@ -9,7 +9,7 @@ phpmyadmin:
   labels:
     de.netzpepper.phpmyadmin.servername: phpmyadmin.${SERVERNAME}
 typo3:
-  image: theinrichs/typo3_7-6:0.11
+  image: theinrichs/typo3_7-6:0.12
   links:
   - db:mysql
   volumes:
