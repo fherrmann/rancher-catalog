@@ -9,7 +9,7 @@ phpmyadmin:
   labels:
     de.netzpepper.phpmyadmin.servername: phpmyadmin.${SERVERNAME}
 typo3:
-  image: theinrichs/typo3_7-6:0.12
+  image: netzpepper/typo3_7-6:0.13
   links:
   - db:mysql
   volumes:
@@ -21,7 +21,7 @@ typo3:
     de.netzpepper.servername: www.${SERVERNAME}
     de.netzpepper.redirects: ${SERVERNAME}
 access:
-  image: theinrichs/sftp:0.9
+  image: netzpepper/sftp:0.9
   volumes:
   - ${SERVERNAME}-typo3:/data/typo3
   - ${SERVERNAME}-config:/data/config
