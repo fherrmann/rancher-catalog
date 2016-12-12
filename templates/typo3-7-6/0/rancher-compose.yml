@@ -8,18 +8,8 @@
       label: "Servername"
       required: true
       type: "string"
-    - variable: "MAILADDRESS"
-      description: "Your mailaddress"
-      label: "Mailaddress"
-      required: true
-      type: "string"
     - variable: "PROXYPORT"
       description: "Port that is addressed by reverse-proxy. Leave empty to avoid proxying"
       label: "Proxyport"
       default: 80
       type: "int"
-    - variable: "COPYFROM"
-      description: "Use "
-      label: "Copy system from specified location"
-      default: false
-      type: "string"
