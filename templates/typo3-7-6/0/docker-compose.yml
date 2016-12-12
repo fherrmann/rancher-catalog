@@ -1,5 +1,5 @@
 db:
-  image: mariadb
+  image: mariadb:10.1
   environment:
     MYSQL_RANDOM_ROOT_PASSWORD: true
   volumes:
