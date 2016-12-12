@@ -26,6 +26,7 @@ access:
   volumes:
   - ${SERVERNAME}-typo3:/data/typo3
   - ${SERVERNAME}-config:/data/config
+  - /root/docker/ftpd.passwd:/etc/proftpd/ftpd.passwd
   labels:
     de.netzpepper.sftp.servername: sftp.${SERVERNAME}
 
