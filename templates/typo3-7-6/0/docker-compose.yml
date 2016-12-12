@@ -1,9 +1,10 @@
 db:
   image: mariadb:10.1
   environment:
-    MYSQL_RANDOM_ROOT_PASSWORD: true
+    MYSQL_ROOT_PASSWORD_FILE: "/secrets/mysql/pw.txt"
   volumes:
   - ${SERVERNAME}-mysql:/var/lib/mysql
+  - secrets:/secrets
 phpmyadmin:
   image: phpmyadmin/phpmyadmin
   labels:
