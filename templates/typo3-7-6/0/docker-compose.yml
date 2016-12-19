@@ -22,11 +22,13 @@ typo3:
     de.netzpepper.servername: www.${SERVERNAME}
     de.netzpepper.redirects: ${SERVERNAME}
 access:
-  image: netzpepper/sftp:0.9
+  image: netzpepper/sftp:0.10
+  environment:
+        FTP_USER_FILE: "/secrets/ftp/ftpd.passwd"
   volumes:
   - ${SERVERNAME}-typo3:/data/typo3
   - ${SERVERNAME}-config:/data/config
-  - /root/docker/ftpd.passwd:/etc/proftpd/ftpd.passwd
+  - secrets:/secrets
   labels:
     de.netzpepper.sftp.servername: sftp.${SERVERNAME}
 
